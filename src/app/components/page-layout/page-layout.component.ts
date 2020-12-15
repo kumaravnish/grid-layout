@@ -16,6 +16,10 @@ export class PageLayoutComponent implements AfterViewInit {
   leftPanelCollapsed = false;
   rightPanelCollapsed = false;
 
+  get year(): number {
+    return new Date().getFullYear();
+  }
+
   constructor() { }
 
   ngAfterViewInit(): void {
