@@ -1,0 +1,124 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.header {
+  grid-area: header;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.main {
+  grid-area: main;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "toolbar toolbar toolbar"
+    "left-panel content right-panel";
+}
+
+.footer {
+  grid-area: footer;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.toolbar {
+  grid-area: toolbar;
+  border-bottom: solid 1px #ccc;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.left-panel {
+  grid-area: left-panel;
+  border-right: solid 1px #ccc;
+  margin-right: 1rem;
+  padding: 0 0.5rem 0.5rem;
+
+  &.no-margin {
+    margin-right: 0;
+  }
+}
+
+.content {
+  grid-area: content;
+  height: 100%;
+
+  ::ng-deep [content] {
+    height: 100%;
+  }
+}
+
+.right-panel {
+  grid-area: right-panel;
+  border-left: solid 1px #ccc;
+  margin-left: 1rem;
+  padding: 0 0.5rem 0.5rem;
+
+  &:empty {
+    display: none;
+  } 
+}
+
+.hide {
+  display: none;
+}
+
+.no-margin {
+  margin-left: 0;
+}
+
+.collapsed {
+  width: 2rem !important;
+
+  ::ng-deep [left-panel-title],
+  ::ng-deep [right-panel-title] {
+    transform: rotate(90deg);
+    margin-top: 1rem;
+  }
+
+  ::ng-deep [left-panel],
+  ::ng-deep [right-panel] {
+    display: none;
+  }
+
+  .title-bar {
+    flex-direction: column;
+    flex-flow: column-reverse;
+  }
+}
+
+.sm {
+  width: 10rem;
+}
+
+.md {
+  width: 20rem;
+}
+
+.lg {
+  width: 30rem;
+}
+
+.title-bar {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}

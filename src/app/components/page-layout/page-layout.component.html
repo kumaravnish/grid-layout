@@ -1,0 +1,34 @@
+<div class="header">
+  <ng-content select="[header]"></ng-content>
+</div>
+<div class="main">
+  <div class="toolbar">
+    <ng-content select="[toolbar]"></ng-content>
+  </div>
+  <div #leftPanel class="left-panel" [ngClass]="{ collapsed: leftPanelCollapsed}">
+    <div class="title-bar">
+      <ng-content select="[left-panel-title]"></ng-content>
+      <button (click)="toggleLeftPanel()">
+        <span *ngIf="!leftPanelCollapsed">&larr;</span>
+        <span *ngIf="leftPanelCollapsed">&rarr;</span>
+      </button>
+    </div>
+    <ng-content select="[left-panel]"></ng-content>
+  </div>
+  <div class="content">
+    <ng-content select="[content]"></ng-content>
+  </div>
+  <div #rightPanel class="right-panel" [ngClass]="{ collapsed: rightPanelCollapsed}">
+    <div class="title-bar">
+      <ng-content select="[right-panel-title]"></ng-content>
+      <button (click)="toggleRightPanel()">
+        <span *ngIf="!rightPanelCollapsed">&rarr;</span>
+        <span *ngIf="rightPanelCollapsed">&larr;</span>
+      </button>
+    </div>
+    <ng-content select="[right-panel]"></ng-content>
+  </div>
+</div>
+<div class="footer" *ngIf="!hideFooter">
+  <page-footer></page-footer>
+</div>
